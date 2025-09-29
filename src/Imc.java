@@ -8,6 +8,7 @@ public class Imc {
     double alturareal;
     String nome;
 
+
     public void obterDados(){
 
         Scanner leitor = new Scanner(System.in);
@@ -18,18 +19,23 @@ public class Imc {
         altura = leitor.nextDouble();
 
         System.out.print("Digite o seu nome: ");
-        nome = leitor.next();
+        nome = leitor.nextLine();
 
+        calcularImc();
     }
 
     public void calcularImc(){
         alturareal = altura / 100;
         imc = peso / (alturareal * alturareal);
+        String imcreal = String.format("%.2f",imc);
 
     }
 
     public void exibirResultados(){
-
+        calcularImc();
+        String imcreal = String.format("%.2f",imc);
+        
+        
         System.out.println("Iremos realizar o calculo do seu IMC");
         System.out.println("---------------------------------");
         System.out.println("Obtendo dados:");
@@ -37,7 +43,7 @@ public class Imc {
         System.out.println("ALTURA: " + altura);
         System.out.println("NOME: " + nome);
         System.out.println("---------------------------------");
-        System.out.println("Seu IMC é de " + imc);
+        System.out.println("Seu IMC é de " + imcreal);
         if (imc >= 25 && imc < 30) {
             System.out.println("Você está levemente acima do peso, não está ruim mas pode melhorar!");
         } else if (imc>= 18.6 && imc <25){
@@ -51,6 +57,5 @@ public class Imc {
         } else  {
             System.out.println("Você está com obesidade mórbida, por favor procure um médico imediatamente");
         }
-
     }
 }
